@@ -11,12 +11,12 @@
  * 
  * The following code is demonstrating a way of completing this task
  * It returns the string `foofoo`
-*/
+ */
 
 function processFirstItem(stringList, callback) {
-  return callback(stringList[0])
+    return callback(stringList[0])
 }
-console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
+console.log(processFirstItem(['foo', 'bar'], function(str) { return str + str }));
 
 // ⭐️ Example Challenge END ⭐️
 
@@ -28,19 +28,25 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+
+    counter1 is a variable declared using const, making hoisting impossible. counter2 is a function
+
   2. Which of the two uses a closure? How can you tell?
-  
+
+    counter2 uses closure. You can tell because there aren't any variables declared inside the function.
+ 
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+
+
 */
 
 // counter1 code
 function counterMaker() {
-  let count = 0;
-  return function counter() {
-   return count++;
-  }
+    let count = 0;
+    return function counter() {
+        return count++;
+    }
 }
 
 const counter1 = counterMaker();
@@ -49,7 +55,7 @@ const counter1 = counterMaker();
 let count = 0;
 
 function counter2() {
-  return count++;
+    return count++;
 }
 
 
@@ -62,8 +68,8 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning() {
+    return Math.floor(Math.random() * 2);
 }
 
 
@@ -79,26 +85,33 @@ Use the finalScore function below to do the following:
   "Home": 11,
   "Away": 5
 }
-*/ 
+*/
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(inning, numberOfInnings) {
+    var totalHomeScore = 0;
+    var totalAwayScore = 0
+
+    for (let i = 0; i < numberOfInnings; i++) {
+        totalHomeScore = totalHomeScore + inning;
+        totalAwayScore = totalAwayScore + inning;
+    }
+    return `"Home":${totalHomeScore}, \n"Away": ${totalAwayScore}`;
 }
+
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore( /*Your Code Here */ ) {
+    /*Your Code Here */
 }
 
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
-  1. Receive the callback function `getInningScore` from Task 4
-  2. Receive the callback function `inning` from Task 2
+  1. Receive the callback function `getInningScore` from Task 4N'Z;
   3. Receive a number of innings to be played
   4. Return an array where each of it's index values equals a string stating the
   Home and Away team's scores for each inning.  Not the cummulative score.
@@ -136,25 +149,25 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard( /* CODE HERE */ ) {
+    /* CODE HERE */
 }
 
 
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
-function foo(){
-  //console.log('its working');
-  return 'bar';
+function foo() {
+    //console.log('its working');
+    return 'bar';
 }
-export default{
-  foo,
-  processFirstItem,
-  counter1,
-  counter2,
-  inning,
-  finalScore,
-  getInningScore,
-  scoreboard,
+export default {
+    foo,
+    processFirstItem,
+    counter1,
+    counter2,
+    inning,
+    finalScore,
+    getInningScore,
+    scoreboard,
 }
