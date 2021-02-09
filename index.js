@@ -90,12 +90,16 @@ Use the finalScore function below to do the following:
 function finalScore(inning, numberOfInnings) {
     var totalHomeScore = 0;
     var totalAwayScore = 0
-
+    let inningScore = getInningScore(inning);
     for (let i = 0; i < numberOfInnings; i++) {
-        totalHomeScore = totalHomeScore + inning;
-        totalAwayScore = totalAwayScore + inning;
+        totalHomeScore = totalHomeScore + inningScore.Home;
+        totalAwayScore = totalAwayScore + inningScore.Away;
     }
-    return `"Home":${totalHomeScore}, \n"Away": ${totalAwayScore}`;
+    let finalTotals = {
+        "Away": totalAwayScore,
+        "Home": totalHomeScore
+    };
+    return finalTotals;
 }
 
 
@@ -104,14 +108,18 @@ Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore( /*Your Code Here */ ) {
-    /*Your Code Here */
+function getInningScore(inning) {
+    let inningScore = {
+        "Home": inning(),
+        "Away": inning()
+    };
+    return inningScore;
 }
 
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
-  1. Receive the callback function `getInningScore` from Task 4N'Z;
+  1. Receive the callback function `getInningScore` from Task4 ;
   3. Receive a number of innings to be played
   4. Return an array where each of it's index values equals a string stating the
   Home and Away team's scores for each inning.  Not the cummulative score.
@@ -149,8 +157,31 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard( /* CODE HERE */ ) {
-    /* CODE HERE */
+function scoreboard(getInningScore, inning, numberInnings) {
+    let inningScore = getInningScore(inning);
+    scoreArray = [];
+    homeArray = [];
+    awayArray = [];
+    for (let i = 1; i < numberInnings; i++) {
+        scoreArray.push(`Inning ${i}: Away ${inningScore.Away} - Home ${inningScore.Home}`);
+        homeArray.push(inningScore.Home);
+        awayArray.push(inningScore.Away);
+    }
+    let totalHome = 0;
+    let totalAway = 0;
+    for (let i = 0; i < homeArray.length; i++) {
+        totalHome += homeArray[i];
+        totalAway += awayArray[i];
+    }
+    if (totalHome == totalAway) {
+        scoreArray.push(`This game will require extra innings: Away ${totalAway} - Home ${totalHome}`);
+    } else {
+        scoreArray.push(`Final Score: Away ${totalAway} - Home ${totalHome}`);
+    }
+    for (string in scoreArray) {
+        console.log(string);
+    }
+    return scoreArray;
 }
 
 
