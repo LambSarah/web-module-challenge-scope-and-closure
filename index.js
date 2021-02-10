@@ -8,7 +8,7 @@
  *  2. Receive a callback function that takes a string as its argument in a parameter
  *  3. Return the result of invoking the callback function and passing in the FIRST 
  *     element in the array as the argument
- * 
+ *q
  * The following code is demonstrating a way of completing this task
  * It returns the string `foofoo`
  */
@@ -38,6 +38,7 @@ console.log(processFirstItem(['foo', 'bar'], function(str) { return str + str })
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
 
+     counter1 would be useful when you need to create an object for counting. counter2 would be the better choice if you wanted to utilize a seperate function.
 
 */
 
