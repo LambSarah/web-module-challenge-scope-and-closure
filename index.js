@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // ⭐️ Example Challenge START ⭐️
 
 /**Example Task : processFirstItem()
@@ -14,9 +15,11 @@
  */
 
 function processFirstItem(stringList, callback) {
-    return callback(stringList[0])
+    return callback(stringList[0]);
 }
-console.log(processFirstItem(['foo', 'bar'], function(str) { return str + str }));
+console.log(processFirstItem(['foo', 'bar'], function(str) {
+    return str + str;
+}));
 
 // ⭐️ Example Challenge END ⭐️
 
@@ -47,7 +50,7 @@ function counterMaker() {
     let count = 0;
     return function counter() {
         return count++;
-    }
+    };
 }
 
 const counter1 = counterMaker();
@@ -90,7 +93,7 @@ Use the finalScore function below to do the following:
 
 function finalScore(inning, numberOfInnings) {
     var totalHomeScore = 0;
-    var totalAwayScore = 0
+    var totalAwayScore = 0;
     let inningScore = getInningScore(inning);
     for (let i = 0; i < numberOfInnings; i++) {
         totalHomeScore = totalHomeScore + inningScore.Home;
@@ -160,10 +163,14 @@ Use the scoreboard function below to do the following:
 
 function scoreboard(getInningScore, inning, numberInnings) {
     let inningScore = getInningScore(inning);
+    // eslint-disable-next-line no-undef
     scoreArray = [];
+    // eslint-disable-next-line no-undef
     homeArray = [];
+    // eslint-disable-next-line no-undef
     awayArray = [];
     for (let i = 1; i < numberInnings; i++) {
+        // eslint-disable-next-line no-undef
         scoreArray.push(`Inning ${i}: Away ${inningScore.Away} - Home ${inningScore.Home}`);
         homeArray.push(inningScore.Home);
         awayArray.push(inningScore.Away);
@@ -179,7 +186,7 @@ function scoreboard(getInningScore, inning, numberInnings) {
     } else {
         scoreArray.push(`Final Score: Away ${totalAway} - Home ${totalHome}`);
     }
-    for (string in scoreArray) {
+    for (let string in scoreArray) {
         console.log(string);
     }
     return scoreArray;
@@ -202,4 +209,4 @@ export default {
     finalScore,
     getInningScore,
     scoreboard,
-}
+};
